@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bankid_asyncio"
-version = "0.0.1"
+version = "0.0.2"
 description = "BankID client for Python with asyncio support."
 license = "MIT"
 authors = ["Kostiantyn Salnykov <kostiantyn.salnykov@gmail.com>"]
@@ -25,7 +25,6 @@ classifiers = [
 python = "^3.8"
 httpx = "^0.23.0"
 pydantic = "^1.9.2"
-fastapi = "^0.81.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"
