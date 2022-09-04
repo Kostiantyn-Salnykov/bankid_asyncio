@@ -25,7 +25,7 @@ class TestBaseAuthRequestSchema:
         with pytest.raises(ValueError) as exception_context:
             BaseAuthRequestSchema.validate_user_ip(v=ip_value)
 
-        assert str(exception_context.value) == ValueError("Invalid user IPv4.")
+        assert str(exception_context.value) == str(ValueError("Invalid user IPv4."))
 
     def test_validate_personal_number(self, personal_number):
         result = BaseAuthRequestSchema.validate_personal_number(v=personal_number)

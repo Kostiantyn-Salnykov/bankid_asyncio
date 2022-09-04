@@ -1,11 +1,25 @@
 [tool.poetry]
 name = "bankid_asyncio"
 version = "0.0.1"
-description = "Asynchronous/Synchronous client for BankID."
+description = "BankID client for Python with asyncio support."
+license = "MIT"
 authors = ["Kostiantyn Salnykov <kostiantyn.salnykov@gmail.com>"]
+maintainers = ["Kostiantyn Salnykov <kostiantyn.salnykov@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/Kostiantyn-Salnykov/bankid_asyncio/"
+keywords = ["bankid", "client", "pydantic", "httpx"]
 packages = [
     {include = "bankid_asyncio"},
 ]
+classifiers = [
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[tool.poetry.urls]
+"Issues" = "https://github.com/Kostiantyn-Salnykov/bankid_asyncio/issues"
+"Discussions" = "https://github.com/Kostiantyn-Salnykov/bankid_asyncio/discussions"
 
 [tool.poetry.dependencies]
 python = "^3.8"
