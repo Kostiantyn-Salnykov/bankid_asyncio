@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.10'
       - name: "Install dependencies 🔧"
-        run: pip install mkdocs[i18n] mkdocs-material pymdown-extensions mkdocs-glightbox mkdocs-static-i18n mkdocs-build-plantuml-plugin mkdocstrings
+        run: pip install mkdocs[i18n] mkdocs-material pymdown-extensions mkdocs-glightbox mkdocs-static-i18n mkdocs-build-plantuml-plugin mkdocstrings mkdocs-macros-plugin
 
       - name: "Build 🏗 end deploy 🚀 to GitHub pages."
         run: mkdocs gh-deploy --force
