@@ -6,6 +6,7 @@ site_url: "https://kostiantyn-salnykov.github.io/bankid_asyncio"  # logo link
 dev_addr: "localhost:9999"  # local server `HOST:PORT`
 repo_url: "https://github.com/Kostiantyn-Salnykov/bankid_asyncio"
 repo_name: "Kostiantyn-Salnykov/bankid_asyncio"  # name of Git repository
+edit_uri: ""
 remote_branch: "docs"
 copyright: "Copyright &copy; 2022 bankid-asyncio - All rights reserved."  # Footer at bottom
 
