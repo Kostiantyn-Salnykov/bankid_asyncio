@@ -1,5 +1,5 @@
 site_name: "bankid-asyncio Documentation."
-site_description: "bankid-asyncio Documentation."
+site_description: "bankid-asyncio - BankID client for Python with asyncio support."
 site_author: "Kostiantyn Salnykov"
 site_dir: "docs_build"  # Build directory
 site_url: "https://kostiantyn-salnykov.github.io/bankid_asyncio"  # logo link
