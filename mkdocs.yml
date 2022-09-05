@@ -1,0 +1,155 @@
+site_name: "bankid-asyncio Documentation."
+site_description: "bankid-asyncio - BankID client for Python with asyncio support."
+site_author: "Kostiantyn Salnykov"
+site_dir: "docs_build"  # Build directory
+site_url: "https://kostiantyn-salnykov.github.io/bankid_asyncio"  # logo link
+dev_addr: "localhost:9999"  # local server `HOST:PORT`
+repo_url: "https://github.com/Kostiantyn-Salnykov/bankid_asyncio"
+repo_name: "Kostiantyn-Salnykov/bankid_asyncio"  # name of Git repository
+remote_branch: "docs"
+copyright: "Copyright &copy; 2022 bankid-asyncio - All rights reserved."  # Footer at bottom
+
+theme:
+  name: "material"
+#  logo: ""
+#  favicon: ""
+  language: "en"
+  locale: "en"
+  palette:
+    - scheme: "default"
+      primary: "black"
+      accent: "green"
+      toggle:
+        icon: "material/weather-night"
+        name: "Switch to dark mode"
+    - scheme: "slate"
+      primary: "black"
+      accent: "green"
+      toggle:
+        icon: "material/weather-sunny"
+        name: "Switch to light mode"
+  font:
+    text: "Robot"
+    code: "Roboto Mono"
+  features:
+    - navigation.indexes  # remove navigation duplicates (for tabs)
+#    - navigation.top
+#    - navigation.tabs.sticky
+#    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.instant
+    - search.suggest
+    - search.share
+    - search.highlight
+    - content.tabs.link
+
+nav:
+  - Main 🏡: index.md
+  - Usage 🔌: usage.md
+
+plugins:
+  - glightbox  # image zoom & drag
+  - mkdocstrings:  # embed python code with docstring inside .md
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_source: false  # Show source code of module | class | method | function
+            show_bases: true  # Show base classes
+            show_root_heading: true  # Show path and class name in render
+            heading_level: 3  # TOC level of
+            show_category_heading: true
+            show_submodules: true
+            show_if_no_docstrings: true
+            show_signature_annotations: true
+            annotations_path: "source"
+  - search:
+      min_search_length: 2
+      lang:
+        - "en"
+        - "uk"
+  - macros:
+      verbose: true
+      on_error_fail: true
+      include_dir: "docs"
+  - i18n:
+      docs_structure: "suffix"
+      default_language: "en"
+      languages:
+        en:
+          name: "English"
+          site_name: "bankid-asyncio Documentation."
+        uk:
+          name: "Українська"
+          site_name: "Документація bankid-asyncio."
+      nav_translations:
+        uk:
+#          Welcome: "Ласкаво просимо"
+#          Architecture: "Архітектура"
+  - build_plantuml:
+      render: "server" # or "local" for local rendering
+      server: "http://www.plantuml.com/plantuml" # official plantuml server
+      disable_ssl_certificate_validation: true # for self-signed and invalid certs
+      output_format: "png" # or "svg"
+      diagram_root: "docs/diagrams" # should reside under docs_dir
+      output_folder: "out"
+      input_folder: "src"
+      input_extensions: "" # comma separated list of extensions to parse, by default every file is parsed
+
+markdown_extensions:
+  - footnotes  # Ability to set hyperlink to bottom of page (as in Wikipedia)
+  - pymdownx.tabbed  # Ability to create switchable tabs
+  - pymdownx.inlinehilite  # Ability to insert code line that highlighted for specified language, e.g. `#!py3 <CODE>` or `:::py3 <CODE>`
+  - pymdownx.caret  # Ability to create power by using caret ^, e.g.: H^2^O (chemical formula)
+  - pymdownx.mark  # Mark text (highlight), e.g.: ==text==
+  - pymdownx.tilde  # Text markers, e.g.: ~~deleted~~ OR ~sub text~
+  # Add symbols, e.g.:(tm)=>™; (c)=>©; (r)=>®; c/o=>℅; +/-=>±; --> => →; <-- => ←; <--> => ↔; =/= => ≠; 1/4 => ¼ etc.; 1st 2nd etc.
+  - pymdownx.smartsymbols
+  - pymdownx.magiclink  # Make clickable links | emails
+  # === Admonitions support
+  # TYPEs: note, abstract, summary, tldr, info, tip, hind, important, success, check, done, question, help, faq,
+  # warning, caution, attention, failure, fail, missing, danger, error, bug, example, quote, cite, todo
+  - admonition  # e.g.: !!! <TYPE>
+  - pymdownx.details  # ??? <TYPE>  (clickable admonition - accordion)
+  - pymdownx.superfences:  # Ability to set HTML & CSS attributes inside code blocks
+  - pymdownx.keys  # Ability to write keys, e.g.: ++ctrl+alt+delete++
+  # ===
+  - pymdownx.tabbed:
+      alternate_style: true  # Enable horizontal tabs, e.g.: ===
+  - pymdownx.extra
+  - abbr  # Ability to use abbreviations, e.g.: *[HTML]: Hyper Text Markup Language
+  - attr_list  # Ability to set HTML & CSS attributes
+  - meta  # Add <meta> tags to HTML
+  - toc:  # Table of contents - right sidebar
+      title: "On this page"
+      permalink: ⚓  # change icon of anchor link
+      permalink_title: "Anchor link to this section for reference"  # Tooltip message
+      toc_depth: 4  # number of depth for `table of contents`
+  - def_list  # add extra symbols for define lists: `-`; `*`; `+`
+  - pymdownx.tasklist:  # Ability to add tasks lists with `- [x] This is checked`; `- [ ] This is not checked`
+      custom_checkbox: true
+  - pymdownx.highlight:
+      linenums: true  # chow line numbers inside code
+      guess_lang: true  # determines language automatically
+      anchor_linenums: true
+      line_anchors: true
+      linenums_style: table
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.snippets:
+      base_path: "."
+      check_paths: true
+      auto_append:
+        - "docs/common/abbreviations.md"  # File for all abbreviations
+
+extra:
+  generator: false
+  alternate:
+    - link: "./"
+      name: "🇺🇸 - English"
+      lang: "en"
+    - link: "./uk/"
+      name: "🇺🇦 - Українська"
+      lang: "uk"

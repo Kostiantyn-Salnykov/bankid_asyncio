@@ -1,5 +1,7 @@
 import enum
 
+__all__ = ["Endpoints", "CollectStatus"]
+
 
 class Endpoints(str, enum.Enum):
     AUTH = "/auth"

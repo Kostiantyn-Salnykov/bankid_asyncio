@@ -2,12 +2,13 @@ import pytest
 from faker import Faker
 from pytest_mock import MockerFixture
 
-from bankid_asyncio.exceptions import (
+from bankid_asyncio import (
     AlreadyInProgressException,
     BankIDException,
     InternalErrorException,
     InvalidParametersException,
     MaintenanceErrorException,
+    Messages,
     MethodNotAllowedException,
     NotFoundException,
     RequestTimeoutException,
@@ -16,7 +17,6 @@ from bankid_asyncio.exceptions import (
     UnsupportedMediaTypeException,
     exception_handler,
 )
-from bankid_asyncio.messages import Messages
 
 
 class TestBankIDException:

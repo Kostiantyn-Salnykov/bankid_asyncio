@@ -5,9 +5,13 @@ import pytest
 from faker import Faker
 from pytest_mock import MockerFixture
 
-from bankid_asyncio.clients.asynchronous_with_pydantic import BankIDAsyncPydanticClient
-from bankid_asyncio.enums import Endpoints
-from bankid_asyncio.schemas import AuthResponseSchema, CollectResponseSchema, SignResponseSchema
+from bankid_asyncio import (
+    AuthResponseSchema,
+    BankIDAsyncPydanticClient,
+    CollectResponseSchema,
+    Endpoints,
+    SignResponseSchema,
+)
 
 
 @pytest.mark.debug()

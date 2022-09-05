@@ -1,0 +1,21 @@
+name: "Build Documentation"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    name: "Build and deploy documentation"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout 🛎"
+        uses: actions/checkout@v3
+      - name: "Setup Python 🐍"
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+      - name: "Install dependencies 🔧"
+        run: pip install mkdocs-material
+
+      - name: "Build 🏗 end deploy 🚀 to GitHub pages."
+        run: mkdocs gh-deploy --force

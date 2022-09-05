@@ -2,12 +2,14 @@ import pytest
 from faker import Faker
 from pytest_mock import MockerFixture
 
-from bankid_asyncio.clients.asynchronous import BankIDAsyncClient
-from bankid_asyncio.clients.asynchronous_with_pydantic import BankIDAsyncPydanticClient
-from bankid_asyncio.clients.synchronous import BankIDSyncClient
-from bankid_asyncio.clients.synchronous_with_pydantic import BankIDSyncPydanticClient
-from bankid_asyncio.factory import BankIDFactory
-from bankid_asyncio.interfaces import BankIDClientInterface
+from bankid_asyncio import (
+    BankIDAsyncClient,
+    BankIDAsyncPydanticClient,
+    BankIDClientInterface,
+    BankIDFactory,
+    BankIDSyncClient,
+    BankIDSyncPydanticClient,
+)
 
 
 class TestBankIDFactory:

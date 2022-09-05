@@ -5,9 +5,7 @@ from bankid_asyncio.clients.synchronous import BankIDSyncClient
 from bankid_asyncio.clients.synchronous_with_pydantic import BankIDSyncPydanticClient
 from bankid_asyncio.interfaces import BankIDFactoryInterface
 
-__all__ = [
-    "BankIDFactory",
-]
+__all__ = ["BankIDFactory"]
 
 
 class BankIDFactory(BankIDFactoryInterface):
