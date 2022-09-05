@@ -19,6 +19,8 @@ from bankid_asyncio.schemas import (
 
 SchemaType = typing.TypeVar(name="SchemaType", bound=BaseSchema)
 
+__all__ = ["BankIDSyncPydanticClient"]
+
 
 class BankIDSyncPydanticClient(BankIDBaseClient):
     def __init__(self, *, host: str, certificate: str, key: str) -> None:

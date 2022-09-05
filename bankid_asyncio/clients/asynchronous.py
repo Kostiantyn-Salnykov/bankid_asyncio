@@ -7,6 +7,8 @@ from bankid_asyncio.enums import Endpoints
 from bankid_asyncio.exceptions import exception_handler
 from bankid_asyncio.helpers import temporary_pem_file
 
+__all__ = ["BankIDAsyncClient"]
+
 
 class BankIDAsyncClient(BankIDBaseClient):
     def __init__(self, *, host: str, certificate: str, key: str) -> None:

@@ -6,6 +6,23 @@ from pydantic import BaseModel, Field, root_validator, validator
 from bankid_asyncio.enums import CollectStatus
 from bankid_asyncio.helpers import validate_and_encode_base64, validate_uuid
 
+__all__ = [
+    "AuthRequestSchema",
+    "AuthResponseSchema",
+    "BaseAuthRequestSchema",
+    "BaseSchema",
+    "CancelRequestSchema",
+    "CertSchema",
+    "CollectRequestSchema",
+    "CollectResponseSchema",
+    "CompletionDataSchema",
+    "DeviceSchema",
+    "RequirementSchema",
+    "SignRequestSchema",
+    "SignResponseSchema",
+    "UserSchema",
+]
+
 
 class BaseSchema(BaseModel):
     class Config:

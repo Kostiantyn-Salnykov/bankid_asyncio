@@ -4,7 +4,7 @@ import pathlib
 import pytest
 from faker import Faker
 
-from bankid_asyncio.helpers import temporary_pem_file, validate_and_encode_base64, validate_uuid
+from bankid_asyncio import temporary_pem_file, validate_and_encode_base64, validate_uuid
 
 
 def test_validate_and_encode_base64(faker: Faker):

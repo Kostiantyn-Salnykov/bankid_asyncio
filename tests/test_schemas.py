@@ -2,7 +2,7 @@ import pytest
 from faker import Faker
 from pytest_mock import MockerFixture
 
-from bankid_asyncio.schemas import (
+from bankid_asyncio import (
     AuthRequestSchema,
     BaseAuthRequestSchema,
     CollectResponseSchema,

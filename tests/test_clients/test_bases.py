@@ -8,7 +8,7 @@ import pytest
 from faker import Faker
 from pytest_mock import MockerFixture
 
-from bankid_asyncio.clients.bases import BankIDBaseClient, build_auth_kwargs, build_sign_kwargs
+from bankid_asyncio import BankIDBaseClient, build_auth_kwargs, build_sign_kwargs
 
 
 class TestBankIDBaseClient:

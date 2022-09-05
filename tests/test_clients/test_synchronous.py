@@ -3,8 +3,7 @@ import pytest
 from faker import Faker
 from pytest_mock import MockerFixture
 
-from bankid_asyncio.clients.synchronous import BankIDSyncClient
-from bankid_asyncio.enums import Endpoints
+from bankid_asyncio import BankIDSyncClient, Endpoints
 
 
 class TestBankIDSyncClient:

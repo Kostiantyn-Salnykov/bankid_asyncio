@@ -5,8 +5,7 @@ import pytest
 from faker import Faker
 from pytest_mock import MockerFixture
 
-from bankid_asyncio.clients.asynchronous import BankIDAsyncClient
-from bankid_asyncio.enums import Endpoints
+from bankid_asyncio import BankIDAsyncClient, Endpoints
 
 
 class TestBankIDAsyncClient:
