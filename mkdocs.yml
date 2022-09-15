@@ -1,13 +1,13 @@
-site_name: "bankid-asyncio Documentation."
-site_description: "bankid-asyncio - BankID client for Python with asyncio support."
+site_name: "bankid-asyncio"
+site_description: "bankid-asyncio - BankID client for Python with asyncio support."  # SEO
 site_author: "Kostiantyn Salnykov"
 site_dir: "docs_build"  # Build directory
 site_url: "https://kostiantyn-salnykov.github.io/bankid_asyncio"  # logo link
 dev_addr: "localhost:9999"  # local server `HOST:PORT`
 repo_url: "https://github.com/Kostiantyn-Salnykov/bankid_asyncio"
 repo_name: "Kostiantyn-Salnykov/bankid_asyncio"  # name of Git repository
-edit_uri: ""
-remote_branch: "docs"
+edit_uri: ""  # disable `edit` button
+remote_branch: "docs"  # gh-deploy branch name
 copyright: "Copyright &copy; 2022 bankid-asyncio - All rights reserved."  # Footer at bottom
 
 theme:
@@ -37,6 +37,7 @@ theme:
 #    - navigation.top
 #    - navigation.tabs.sticky
 #    - navigation.tabs
+#    - toc.integrate  # move navigation to the left
     - navigation.sections
     - navigation.expand
     - navigation.instant
@@ -47,6 +48,7 @@ theme:
 
 nav:
   - Main 🏡: index.md
+  - Setup BankID 🔧: setup.md
   - Usage 🔌: usage.md
 
 plugins:
@@ -80,10 +82,10 @@ plugins:
       languages:
         en:
           name: "English"
-          site_name: "bankid-asyncio Documentation."
+          site_name: "bankid-asyncio"
         uk:
           name: "Українська"
-          site_name: "Документація bankid-asyncio."
+          site_name: "bankid-asyncio"
       nav_translations:
         uk:
 #          Welcome: "Ласкаво просимо"
