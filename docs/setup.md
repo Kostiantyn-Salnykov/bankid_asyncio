@@ -116,10 +116,6 @@ Here is a guide: [BankID test configuration](https://www.bankid.com/en/utvecklar
 8. Done.
 
 
-!!! warning "TODO"
-    If you have a Windows PC, you can help to document it with screenshots (Contributors welcome).
-
-
 ### Test MacOS app 💻
 
 !!! warning "TODO"
