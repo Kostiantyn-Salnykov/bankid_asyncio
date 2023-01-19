@@ -1,6 +1,6 @@
 ## Badges 🏷
 ![GitHub](https://img.shields.io/github/license/Kostiantyn-Salnykov/bankid_asyncio)
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/Kostiantyn-Salnykov/bankid_asyncio/Python%20package/main)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/Kostiantyn-Salnykov/bankid_asyncio/python-package.yml?branch=main)
 ![GitHub (branch)](https://img.shields.io/badge/branch-main-brightgreen)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Kostiantyn-Salnykov/bankid_asyncio/main)
 [![codecov](https://codecov.io/gh/Kostiantyn-Salnykov/bankid_asyncio/branch/main/graph/badge.svg?token=F4XO2O9DXY)](https://codecov.io/gh/Kostiantyn-Salnykov/bankid_asyncio)

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bankid_asyncio"
-version = "0.0.3"
+version = "0.0.4"
 description = "BankID client for Python with asyncio support."
 license = "MIT"
 authors = ["Kostiantyn Salnykov <kostiantyn.salnykov@gmail.com>"]
@@ -126,7 +126,7 @@ directory = "coverage"
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = py38, py39, py310
+envlist = py38, py39, py310, py311
 isolated_build = true
 
 [testenv]
