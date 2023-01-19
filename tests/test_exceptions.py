@@ -21,7 +21,7 @@ from bankid_asyncio import (
 
 class TestBankIDException:
     def test__repr__(self, faker: Faker):
-        message, code, details = Messages.RFA5, faker.pyint(), faker.pystr()
+        message, code, details = Messages.RFA5.value, faker.pyint(), faker.pystr()
         expected_result = f'{BankIDException.__name__}(message="{message}", code={code}, details="{details}")'
 
         result = BankIDException(message=message, code=code, details=details).__repr__()
@@ -29,7 +29,7 @@ class TestBankIDException:
         assert result == expected_result
 
     def test__str__(self, faker: Faker):
-        message, code, details = Messages.RFA5, faker.pyint(), faker.pystr()
+        message, code, details = Messages.RFA5.value, faker.pyint(), faker.pystr()
         expected_result = f'{BankIDException.__name__}(message="{message}", code={code}, details="{details}")'
 
         result = BankIDException(message=message, code=code, details=details).__str__()
@@ -37,7 +37,7 @@ class TestBankIDException:
         assert result == expected_result
 
     def test_dict(self, faker: Faker):
-        message, code, details = Messages.RFA5, faker.pyint(), faker.pystr()
+        message, code, details = Messages.RFA5.value, faker.pyint(), faker.pystr()
         expected_result = {"message": message, "code": code, "details": details}
         result = BankIDException(message=message, code=code, details=details).dict()
 
@@ -58,20 +58,20 @@ def test_exception_handler_success(mocker: MockerFixture, faker: Faker):
 @pytest.mark.parametrize(
     argnames=["status_code", "error_code", "exception", "message"],
     argvalues=[
-        (400, "alreadyInProgress", AlreadyInProgressException, Messages.RFA4),
+        (400, "alreadyInProgress", AlreadyInProgressException, Messages.RFA4.value),
         (400, "invalidParameters", InvalidParametersException, ""),
         (401, "unauthorized", UnauthorizedException, ""),
         (403, "unauthorized", UnauthorizedException, ""),
         (404, "notFound", NotFoundException, ""),
         (405, "methodNotAllowed", MethodNotAllowedException, ""),
         (405, "", MethodNotAllowedException, ""),
-        (408, "requestTimeout", RequestTimeoutException, Messages.RFA5),
+        (408, "requestTimeout", RequestTimeoutException, Messages.RFA5.value),
         (415, "unsupportedMediaType", UnsupportedMediaTypeException, ""),
-        (500, "internalError", InternalErrorException, Messages.RFA5),
-        (503, "maintenance", MaintenanceErrorException, Messages.RFA5),
+        (500, "internalError", InternalErrorException, Messages.RFA5.value),
+        (503, "maintenance", MaintenanceErrorException, Messages.RFA5.value),
         # Unhandled error:
         *(
-            (Faker().pyint(min_value=400, max_value=500), "test", UnhandledException, Messages.RFA22)
+            (Faker().pyint(min_value=400, max_value=500), "test", UnhandledException, Messages.RFA22.value)
             for i in range(0, 4)
         ),
     ],
