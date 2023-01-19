@@ -48,6 +48,8 @@ jobs:
           env_vars: OS, PYTHON
 
   docs:
+    needs: build
+    runs-on: ubuntu-latest
     if: ${{ github.event.push }}
     steps:
       - name: "Install dependencies 🔧"
