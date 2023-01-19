@@ -110,14 +110,14 @@ log_cli = true
 parallel = true
 branch = true
 source = ["bankid_asyncio",]
-omit = ["*/.local/*", "*/.idea/*", "*./venv/*", "*/test*", "*__init__*", "**interfaces.py"]
+omit = ["*/.local/*", "*/.idea/*", "*./venv/*", "*/test*", "*__init__*", "*/*interfaces.py"]
 
 [tool.coverage.report]
 #show_missing = true
 ignore_errors = true
 sort = "-Cover"
 precision = 2
-omit = ["*/.local/*", "*/.idea/*", "*./venv/*", "*/test*", "*__init__*", "**interfaces.py"]
+omit = ["*/.local/*", "*/.idea/*", "*./venv/*", "*/test*", "*__init__*", "*/*interfaces.py"]
 exclude_lines = ["pragma: no cover", "if __name__ = .__main__.:"]
 
 [tool.coverage.html]
