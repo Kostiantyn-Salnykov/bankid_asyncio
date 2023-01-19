@@ -46,3 +46,12 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           env_vars: OS, PYTHON
+
+  docs:
+    if: ${{ github.event.push }}
+    steps:
+      - name: "Install dependencies 🔧"
+        run: poetry install --no-interaction --no-ansi --sync --with docs
+
+      - name: "Build 🏗 end deploy 🚀 to GitHub pages."
+        run: poetry run mkdocs gh-deploy --force --clean --verbose
