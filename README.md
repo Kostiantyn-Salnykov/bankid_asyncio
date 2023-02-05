@@ -1,6 +1,6 @@
 # bankid-asyncio 🏦
 
-## Badges 🏷
+## Badges 🏷️
 ![GitHub](https://img.shields.io/github/license/Kostiantyn-Salnykov/bankid_asyncio)
 ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/Kostiantyn-Salnykov/bankid_asyncio/python-package.yml?branch=main)
 ![GitHub (branch)](https://img.shields.io/badge/branch-main-brightgreen)

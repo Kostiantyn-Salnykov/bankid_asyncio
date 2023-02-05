@@ -38,21 +38,54 @@
     ```
 
 ### Test account 💼
-1. Goto [https://demo.bankid.com/](https://demo.bankid.com/){target=_blank}
-2. Click "Generate code"
-3. Fill form with your data (organization, email, project, fist name, last name)
+
+Here is a guide: [Get BankID for test](https://www.bankid.com/en/utvecklare/test/skaffa-testbankid/test-bankid-get){target=_blank}
+
+#### Issue personal code
+!!! tip
+    Use this method when you set up your environment for the first time.
+    Otherwise, use this methods [mobile](#login-with-mobile-app) or [desktop](#login-with-desktop-app).
+
+1. Goto [https://demo.bankid.com/ordercode](https://demo.bankid.com/ordercode){target=_blank}
+2. Fill form with your data (organization, email, project, fist name, last name)
     
     !!! warning "Organization email"
         Email should be a corporate, emails with `@gmail.com` domain wouldn't work❗
     
     ![Demo BankID Generate Code](assets/demo_bank_1.png)
 
-4. Goto your corporate email, you'll obtain a test 30-days trial code
-5. Use this code to log in
-    ![Demo BankID Login](assets/demo_bank_2.png)
-6. It's all, now you'll be able to set up Mobile / Desktop BankID environments.
+3. Goto your corporate email, you'll obtain a test 30-days trial code.
 
-### Test Android app 📱
+#### Login with personal code
+1. Use this code to log in [https://demo.bankid.com/logincode](https://demo.bankid.com/logincode){target=_blank}
+    ![Demo BankID Login](assets/demo_bank_2.png)
+2. It's all, now you'll be able to set up Mobile / Desktop BankID environments.
+
+#### Login with mobile app
+This is method to log in to test account using mobile app and QR code.
+!!! tip
+    Use this method when you already set up your test account via personal code [Issue personal code](#issue-personal-code).
+
+1. Go to [https://demo.bankid.com/logintest](https://demo.bankid.com/logintest){target=_blank}
+2. Open your BankID test app and scan QR code.
+
+    !!! warning
+        Mobile app should be configured, read here [Mobile test environments](#mobile-test-environments).
+
+#### Login with desktop app
+This is method to log in to test account using desktop app.
+!!! tip
+    Use this method when you already set up your test account via personal code [Issue personal code](#issue-personal-code).
+
+1. Go to [https://demo.bankid.com/logintest](https://demo.bankid.com/logintest){target=_blank}
+2. Click "Alternative: Start BankID Security Application on this device.".
+
+    !!! warning
+        Mobile app should be configured, read here [Mobile test environments](#mobile-test-environments).
+
+### Mobile test environments
+
+#### Test Android app 📱
 Here is a guide: [BankID test configuration](https://www.bankid.com/en/utvecklare/test/skaffa-testbankid/testbankid-konfiguration){target=_blank}
 
 1. Install BankID app from your app store.
@@ -78,7 +111,7 @@ Here is a guide: [BankID test configuration](https://www.bankid.com/en/utvecklar
 5. Disable "airplane mode".
 6. Done.
 
-### Test iOS app 📱
+#### Test iOS app 📱
 
 1. Uninstall any existing version of BankID Security App and then reinstall it from App Store.
 
@@ -92,7 +125,9 @@ Here is a guide: [BankID test configuration](https://www.bankid.com/en/utvecklar
 !!! warning "TODO Screenshots"
     If you have an iPhone you can help to document it with screenshots (Contributors welcome).
 
-### Test Windows app 🖥
+### Desktop test environments
+
+#### Test Windows app 🖥
 
 1. [Download](https://install.bankid.com/api/file-download/Win){.md-button} windows BankID desktop application ([extra link](https://install.bankid.com/Download/PostDownload/Win){target=_blank})
 2. Install it.
@@ -116,64 +151,77 @@ Here is a guide: [BankID test configuration](https://www.bankid.com/en/utvecklar
 8. Done.
 
 
-### Test MacOS app 💻
+#### Test MacOS app 💻
 
 !!! warning "TODO"
     If you have a Macbook, you can help to document it with screenshots (Contributors welcome).
 
-## Connect Test app to BankID test account
-Here is a guide: [Get BankID for test](https://www.bankid.com/en/utvecklare/test/skaffa-testbankid/test-bankid-get){target=_blank}
+### Generate personal number (customizable)
+
+1. Goto [Personal number generator](https://tedeh.net/tools/generator-for-swedish-personnummer/){target=_blank}
+2. Select "Output format" as "YYYYMMDDNNNN".
+3. Select your gender.
+4. Fill out "Date of birth".
+!!! example "Example"
+    ![Generate personal number](assets/demo_bank_2_1.png)
+
+### Generate random personal number with (fejk.se)
 
 1. Generate personal number at: [https://fejk.se/](https://fejk.se/){target=_blank}
-    
-    1.1 Get date of birth (without dashes).
-    
-    1.2 Get latest 4 digits of personnummer.
-    
-    1.3 Concatenate it without dashes.
-    !!! example
-        1) Date of birth `1996-10-21` --> `19961021` (remove dashes)
-        
-        2) End of personal number `-9876` --> `9876` (removed dash)
-        
-        3) Result `19961021` + `9876` --> `199610219876` (must be 12 digits length)
+2. Get date of birth (without dashes). 
+3. Get latest 4 digits of personnummer. 
+4. Concatenate it without dashes.
+!!! example
+    1) Date of birth `1996-10-21` --> `19961021` (remove dashes)
 
-        ![Generate Personal number](assets/demo_bank_3.png)
+    2) End of personal number `-1238` --> `1238` (removed dash)
 
-2. Login with 30-days code to demo BankID.
-3. Click "Issue" under "Issue BankID for Test".
-![Issue BankID for Test](assets/demo_bank_4.png)
-    
-    3.1 Select one option:
+    3) Result `19961021` + `1238` --> `199610211238` (must be 12 digits length)
+    ![Generate personal number](assets/demo_bank_3.png)
 
-    + "^^Issue Mobile BankID^^" - for mobile 📱;
+
+### Issue BankID for test
+1. Login to Demo Bank.
+
+    !!! tip
+        First time login: [personal code](#login-with-personal-code).
         
-    + "^^Issue BankID on file^^" - for desktop 🖥;
-    
-    3.2 Paste personal number into form, add first and last names.
+        Subsequent time login: [mobile](#login-with-mobile-app), [desktop](#login-with-desktop-app).
+
+2. Click selected button under "Issue BankID for Test".
+
+    !!! tip
+
+        + "^^Mobile BankID^^" - for mobile 📱;
+        + "^^BankID on file^^" - for desktop 🖥;
+
+    ![Issue BankID for Test](assets/demo_bank_4.png)
+
+3. Fill data into fields (first name, last name, personal number).
 
     ![Issue for test](assets/demo_bank_5.png)    
 
     !!! tip
         You can use random first name and last name.
 
+4. Click "Issue" and proceed with connection section, depends on your choice (mobile or desktop).
+
 ### Connect with Android 📱
 
 Before start: [requirements](#connect-test-app-to-bankid-test-account)
 
-1. Click "Issue" under "Issue Mobile BankID".
-2. Click "Open BankID issuing".
-    ![Issue BankID for phone](assets/demo_bank_6.png)
+1. Click "Issue" under "Mobile BankID" form.
+    ![Issue BankID for phone](assets/demo_bank_5.png)
 
-3. It will open modal window with QR code.
+2. It will open modal window with QR code.
     ![QR BankID for phone](assets/demo_bank_7.png)
 
-4. Open BankID app.
-5. Click "New BankID".
+3. Open BankID app.
+4. Click "New BankID".
 
     ![New BankID](assets/android/bankid_13.jpeg){width="200"}
 
-6. It will open scanner, scan QR code inside modal window.
+5. It will open scanner, scan QR code inside modal window.
     
     Success screen at mobile:
     
@@ -183,7 +231,7 @@ Before start: [requirements](#connect-test-app-to-bankid-test-account)
     
     ![Activation completed](assets/demo_bank_8.png)
     
-7. You can enable fingerprint to easy approve BankID confirmation.
+6. You can enable fingerprint to easy approve BankID confirmation.
     
     ![Enable fingerprint](assets/android/bankid_6.jpeg){width="170"}
     ![Confirmation](assets/android/bankid_7.jpeg){width="170"}
@@ -191,7 +239,7 @@ Before start: [requirements](#connect-test-app-to-bankid-test-account)
     ![Check fingerprint](assets/android/bankid_9.jpeg){width="170"}
     ![Check fingerprint completed](assets/android/bankid_10.jpeg){width="170"}
 
-8. You can check new test BankID connection inside your "Settings" under the BankID tab.
+7. You can check new test BankID connection inside your "Settings" under the BankID tab.
     
     !!! note
         P.S. Also your main screen now will have "QR code" button instead of "New BankID"
@@ -207,7 +255,9 @@ Before start: [requirements](#connect-test-app-to-bankid-test-account)
 
 Before start: [requirements](#connect-test-app-to-bankid-test-account)
 
-1. Click "Issue" under "Issue BankID on file".
+1. Click "Issue" under "BankID on file" form.
+    ![Issue BankID for phone](assets/demo_bank_5.png)
+    
 2. Click "Open BankID issuing".
 3. It will open modal window with QR code.
     ![Modal](assets/windows/bankid_1.jpeg)

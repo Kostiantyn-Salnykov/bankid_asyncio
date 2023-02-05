@@ -2,7 +2,7 @@
 
 --8<-- "docs/includes/badges.md"
 
-## Dependencies ⛓
+## Dependencies ⛓️
 
 [![Pydantic](https://img.shields.io/badge/pydantic-%5E1.10.1-orange)](https://pydantic-docs.helpmanual.io/)
 [![HTTPX](https://img.shields.io/badge/httpx-%5E0.23.0-orange)](https://www.python-httpx.org/)
@@ -27,7 +27,7 @@ poetry add bankid-asyncio
 
 ## BankID
 
-### Links 🖇
+### Links 🖇️
 #### [BankID](https://www.bankid.com/en){.md-button target=_blank}
 #### [BankID Relying Party Guidelines .pdf](https://www.bankid.com/assets/bankid/rp/BankID-Relying-Party-Guidelines-v3.7.pdf){.md-button target=_blank}
 
