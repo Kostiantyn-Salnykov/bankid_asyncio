@@ -1,0 +1,71 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!theme mars
+autonumber
+actor "User" as U #pink
+participant "Front-end" as FE #green
+participant "Back-end" as BE #black
+participant "BankID API" as BAPI #red
+participant "BankID Mobile APP" as BAPP #blue
+
+title "Auth/Sign success flow"
+U -> FE: Clicks Login/Register with BankID
+activate FE #green
+FE -> BE: Request Auth/Sign
+activate BE #black
+BE -> BAPI: Request **/auth** OR **/sign**
+note right of BAPI #pink
+    Newly created order
+    has TTL ~ 30 seconds.
+end note
+activate BAPI #red
+BAPI -> BE: Response from **/auth** OR **/sign**
+deactivate BAPI
+BAPI <- BE: Request **/collect** by **order_ref**
+activate BAPI #red
+BAPI -> BE: Response from **/collect** by **order_ref**
+deactivate BAPI
+BE -> FE: Response with QR code data\nand order details
+deactivate BE
+FE -> U: Draw QR code
+deactivate FE
+====
+U --> BAPP: Scan QR code with BankID mobile APP
+activate BAPP #blue
+BAPP -> U: Prompt user to __allow or decline__ Auth/Sign request\nAt this stage user see **userVisibleData** inside Auth/Sign details
+deactivate BAPP
+U -[#green]> BAPP: Allow Auth/Sign request
+activate BAPP #blue
+BAPP --> BAPI: Hook, that Auth/Sign successful\nNext **/collect** will have **completionData**
+deactivate BAPP
+group Short polling [No WebSocket realization]
+    loop N times
+        FE --> BE: Request status
+    activate BE #black
+    BE --> BAPI: Request **/collect** by order_ref
+    activate BAPI #red
+    BAPI --[#red]> BE: Response with order details
+    deactivate BAPI
+    BE --> FE: Response with order details\n(pending)
+    destroy BE
+    end
+    FE --> BE: Request status (subsequent)
+    activate BE #black
+    BE --> BAPI: Request **/collect** by order_ref
+    activate BAPI #red
+    BAPI -[#green]> BE: Response with **completionData**
+    note over of BAPI #pink
+        BankID respond with **completionData**
+        only once, then order removes from it.
+        Back-end should stop using **/collect** once
+        get **completionData**.
+    end note
+    deactivate BAPI
+    BE --> BE: Create OR Login user \nby his/her __personal number__\nand __write to your persistent storage__
+    BE --> FE: Response with success
+    deactivate BE #black
+    activate FE #green
+    FE --> U: Auth/Sign result to user
+    deactivate FE #green
+end
+@enduml

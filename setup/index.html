@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="bankid-asyncio - BankID client for Python with asyncio support." name="description"/>
+<meta content="Kostiantyn Salnykov" name="author"/>
+<link href="https://kostiantyn-salnykov.github.io/bankid_asyncio/setup/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<title>Setup BankID 🔧 - bankid-asyncio</title>
+<link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Robot:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Robot";--md-code-font:"Roboto Mono"}</style>
+<link href="../assets/_mkdocstrings.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="green" data-md-color-primary="black" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#setup-bankid">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="bankid-asyncio" class="md-header__button md-logo" data-md-component="logo" href=".." title="bankid-asyncio">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            bankid-asyncio
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Setup BankID 🔧
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="green" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="green" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+</form>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Select language" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="../" hreflang="en">
+                    🇺🇸 - English
+                  </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="../uk/" hreflang="uk">
+                    🇺🇦 - Українська
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Kostiantyn-Salnykov/bankid_asyncio" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Kostiantyn-Salnykov/bankid_asyncio
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="bankid-asyncio" class="md-nav__button md-logo" data-md-component="logo" href=".." title="bankid-asyncio">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    bankid-asyncio
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Kostiantyn-Salnykov/bankid_asyncio" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Kostiantyn-Salnykov/bankid_asyncio
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Main 🏡
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Setup BankID 🔧
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Setup BankID 🔧
+      </a>
+<nav aria-label="On this page" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-test-environment">
+    Prepare test environment
+  </a>
+<nav aria-label="Prepare test environment" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-certificates">
+    Test certificates 🧾
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-account">
+    Test account 💼
+  </a>
+<nav aria-label="Test account 💼" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issue-personal-code">
+    Issue personal code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#login-with-personal-code">
+    Login with personal code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#login-with-mobile-app">
+    Login with mobile app
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#login-with-desktop-app">
+    Login with desktop app
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mobile-test-environments">
+    Mobile test environments
+  </a>
+<nav aria-label="Mobile test environments" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-android-app">
+    Test Android app 📱
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-ios-app">
+    Test iOS app 📱
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desktop-test-environments">
+    Desktop test environments
+  </a>
+<nav aria-label="Desktop test environments" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-windows-app">
+    Test Windows app 🖥
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-macos-app">
+    Test MacOS app 💻
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generate-personal-number-customizable">
+    Generate personal number (customizable)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generate-random-personal-number-with-fejkse">
+    Generate random personal number with (fejk.se)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issue-bankid-for-test">
+    Issue BankID for test
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-with-android">
+    Connect with Android 📱
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-with-ios">
+    Connect with iOS 📱
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-with-windows">
+    Connect with Windows 🖥
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-with-macos">
+    Connect with MacOS 💻
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../usage/">
+        Usage 🔌
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="On this page" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-test-environment">
+    Prepare test environment
+  </a>
+<nav aria-label="Prepare test environment" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-certificates">
+    Test certificates 🧾
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-account">
+    Test account 💼
+  </a>
+<nav aria-label="Test account 💼" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issue-personal-code">
+    Issue personal code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#login-with-personal-code">
+    Login with personal code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#login-with-mobile-app">
+    Login with mobile app
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#login-with-desktop-app">
+    Login with desktop app
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mobile-test-environments">
+    Mobile test environments
+  </a>
+<nav aria-label="Mobile test environments" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-android-app">
+    Test Android app 📱
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-ios-app">
+    Test iOS app 📱
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desktop-test-environments">
+    Desktop test environments
+  </a>
+<nav aria-label="Desktop test environments" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-windows-app">
+    Test Windows app 🖥
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-macos-app">
+    Test MacOS app 💻
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generate-personal-number-customizable">
+    Generate personal number (customizable)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generate-random-personal-number-with-fejkse">
+    Generate random personal number with (fejk.se)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issue-bankid-for-test">
+    Issue BankID for test
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-with-android">
+    Connect with Android 📱
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-with-ios">
+    Connect with iOS 📱
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-with-windows">
+    Connect with Windows 🖥
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-with-macos">
+    Connect with MacOS 💻
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="setup-bankid">Setup BankID 🔧<a class="headerlink" href="#setup-bankid" title="Anchor link to this section for reference">⚓</a></h1>
+<h2 id="prepare-test-environment">Prepare test environment<a class="headerlink" href="#prepare-test-environment" title="Anchor link to this section for reference">⚓</a></h2>
+<h3 id="test-certificates">Test certificates 🧾<a class="headerlink" href="#test-certificates" title="Anchor link to this section for reference">⚓</a></h3>
+<ol>
+<li>Goto <a href="https://www.bankid.com/en/utvecklare/test" target="_blank">https://www.bankid.com/en/utvecklare/test</a></li>
+<li>Click "Download ⬇"</li>
+<li>You'll get <code class="highlight"><span class="na">.p12</span></code> file</li>
+<li>
+<p>To parse <code class="highlight">key.pem</code> from it, use this command:
+    <div class="highlight"><pre><span></span><code><a href="#True-0-1" id="True-0-1" name="True-0-1"></a>openssl pkcs12 -in &lt;FILE&gt;.p12 -out key.pem -nocerts -nodes -legacy -passin 'pass:&lt;PASSWORD&gt;'
+</code></pre></div></p>
+<p>Where <code class="highlight">-in</code> must be a filename and path to <code class="highlight"><span class="na">.p12</span></code> file, password <code class="highlight">-passin 'pass:&lt;PASSWORD&gt;'</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><pre><span></span><code><a href="#True-1-1" id="True-1-1" name="True-1-1"></a>openssl pkcs12 -in FPTestcert4_20220818.p12 -out key.pem -nocerts -nodes -legacy -passin 'pass:qwerty123'
+</code></pre></div>
+This command will produce <code class="highlight">key.pem</code> file</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Usually test password for BankID <code class="highlight"><span class="na">.p12</span></code> file is: <code class="highlight">qwerty123</code></p>
+</div>
+</li>
+<li>
+<p>To parse <code class="highlight">cert.pem</code> from it, use this command:
+    <div class="highlight"><pre><span></span><code><a href="#True-2-1" id="True-2-1" name="True-2-1"></a>openssl pkcs12 -in &lt;FILE&gt;&gt;.p12 -out cert.pem -clcerts -nokeys -legacy -passin 'pass:&lt;PASSWORD&gt;'
+</code></pre></div></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><pre><span></span><code><a href="#True-3-1" id="True-3-1" name="True-3-1"></a>openssl pkcs12 -in FPTestcert4_20220818.p12 -out cert.pem -clcerts -nokeys -legacy -passin 'pass:qwerty123'
+</code></pre></div>
+This command will produce <code class="highlight">cert.pem</code> file</p>
+</div>
+</li>
+<li>
+<p>Copy inner certificate and key data to your environment variables or <code class="highlight"><span class="na">.env</span></code> file, for example:</p>
+</li>
+</ol>
+<details class="example">
+<summary>Example of <code class="highlight"><span class="na">.env</span></code> file</summary>
+<div class="highlight"><pre><span></span><code><a href="#True-4-1" id="True-4-1" name="True-4-1"></a><span class="n">BANK_ID_HOST</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">appapi2</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="n">bankid</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">rp</span><span class="o">/</span><span class="n">v5</span><span class="p">.</span><span class="mi">1</span>
+<a href="#True-4-2" id="True-4-2" name="True-4-2"></a><span class="n">BANK_ID_CERTIFICATE</span><span class="o">=</span><span class="err">'</span><span class="o">-----</span><span class="kr">BEGIN</span> <span class="n">CERTIFICATE</span><span class="o">-----</span>
+<a href="#True-4-3" id="True-4-3" name="True-4-3"></a><span class="n">MIIEyjCCArKgAwIBAgIIMLbIMaRHjMMwDQYJKoZIhvcNAQELBQAwcTELMAkGA1UE</span>
+<a href="#True-4-4" id="True-4-4" name="True-4-4"></a><span class="n">BhMCU0UxHTAbBgNVBAoMFFRlc3RiYW5rIEEgQUIgKHB1YmwpMRUwEwYDVQQFEwwx</span>
+<a href="#True-4-5" id="True-4-5" name="True-4-5"></a><span class="n">MTExMTExMTExMTExLDAqBgNVBAMMI1Rlc3RiYW5rIEEgUlAgQ0EgdjEgZm9yIEJh</span>
+<a href="#True-4-6" id="True-4-6" name="True-4-6"></a><span class="n">bmtJRCBUZXN0MB4XDTIyMDgxNzIyMDAwMFoXDTI0MDgxODIxNTk1OVowcjELMAkG</span>
+<a href="#True-4-7" id="True-4-7" name="True-4-7"></a><span class="n">A1UEBhMCU0UxHTAbBgNVBAoMFFRlc3RiYW5rIEEgQUIgKHB1YmwpMRMwEQYDVQQF</span>
+<a href="#True-4-8" id="True-4-8" name="True-4-8"></a><span class="n">Ewo1NTY2MzA0OTI4MRcwFQYDVQQpDA5UZXN0IGF2IEJhbmtJRDEWMBQGA1UEAwwN</span>
+<a href="#True-4-9" id="True-4-9" name="True-4-9"></a><span class="n">RlAgVGVzdGNlcnQgNDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL4L</span>
+<a href="#True-4-10" id="True-4-10" name="True-4-10"></a><span class="mi">8</span><span class="n">ERHNSi7Jph9gj4ah7Ieok5lZHZbNyW1AiJJ1OfeD1lbAzxSidtTu6NfC83zxCjL</span>
+<a href="#True-4-11" id="True-4-11" name="True-4-11"></a><span class="n">q091lHY5G7dpNDt1rN5Y</span><span class="o">+</span><span class="n">jQvrtcLc8nUpgqLfEUnbGKzZaHlO97jh6pqO8nj</span><span class="o">/</span><span class="n">mal</span>
+<a href="#True-4-12" id="True-4-12" name="True-4-12"></a><span class="n">TrWI70Fr6SO3SxbsgxuwJXlRUAQxI0mPvD1gOd</span><span class="o">+</span><span class="n">uymA</span><span class="o">+</span><span class="n">EqdYS39ijC2eICHSf7bU</span>
+<a href="#True-4-13" id="True-4-13" name="True-4-13"></a><span class="n">wvmscy8TAyEcT4GYmcjai1vbIjlhemmAv</span><span class="o">+</span><span class="n">NKJiSpD</span><span class="o">+</span><span class="n">zqvuHGIzBm71</span><span class="o">/</span><span class="n">Fd6cTAXqk</span>
+<a href="#True-4-14" id="True-4-14" name="True-4-14"></a><span class="n">HkqTlJsxF2m6eojKCfcm5uAvSTXhVbGM155wmpzLskzkQ0dx6LbRNtA</span><span class="o">+</span><span class="n">BDe1MsAA</span>
+<a href="#True-4-15" id="True-4-15" name="True-4-15"></a><span class="n">v8aE2FQ0j31ALgZePY0CAwEAAaNlMGMwEQYDVR0gBAowCDAGBgQqAwQFMA4GA1Ud</span>
+<a href="#True-4-16" id="True-4-16" name="True-4-16"></a><span class="n">DwEB</span><span class="o">/</span><span class="n">wQEAwIHgDAfBgNVHSMEGDAWgBTiuVUIvGKgRjldgAxQSpIBy0zvizAdBgNV</span>
+<a href="#True-4-17" id="True-4-17" name="True-4-17"></a><span class="n">HQ4EFgQUoiM2SwR2MdMVjaZz04J9LbOEau8wDQYJKoZIhvcNAQELBQADggIBAGBA</span>
+<a href="#True-4-18" id="True-4-18" name="True-4-18"></a><span class="n">X1IC7mg1blaeqrTW</span><span class="o">+</span><span class="n">TtPkF7GvsbsWIh0RgG9DYRtXXofad3bn6kbDrfFXKZzv4JH</span>
+<a href="#True-4-19" id="True-4-19" name="True-4-19"></a><span class="n">ERmJSyLXzMLoiwJB16V8Vz</span><span class="o">/</span><span class="n">kHT7AK94ZpLPjedPr2O4U2DGQXu1TwP5nkfgQxTeP</span>
+<a href="#True-4-20" id="True-4-20" name="True-4-20"></a><span class="n">K</span><span class="o">/</span><span class="n">XnDVHNsMKqTnc</span><span class="o">+</span><span class="n">YNX6mj</span><span class="o">/</span><span class="n">UyLnbs8eq</span><span class="o">/</span><span class="n">a9uHOBJR30e0OPAdlc2fTbBT2Cui29E</span>
+<a href="#True-4-21" id="True-4-21" name="True-4-21"></a><span class="n">ctcNH4LrcH4au9vO</span><span class="o">+</span><span class="n">RpEUm1hqZy3mHrx1p8Six6</span><span class="o">+</span><span class="n">qJSERNYIWTID8gklyp8MSyG5</span>
+<a href="#True-4-22" id="True-4-22" name="True-4-22"></a><span class="n">q7dk0WcyvytM1dmVf</span><span class="o">/</span><span class="n">q</span><span class="o">+</span><span class="n">KriljaZ8x2zLhQRz9vpgnfwJ6Qh3cLVoPItVdQ03WpKW</span>
+<a href="#True-4-23" id="True-4-23" name="True-4-23"></a><span class="n">WAB1NCMMyNcszkLZ9OO3IRz8iyWV</span><span class="o">/</span><span class="n">KWGI07ngVuGa7dHuTje6ZjcObBCr2e4uuU</span><span class="o">+</span>
+<a href="#True-4-24" id="True-4-24" name="True-4-24"></a><span class="n">CLENcretUAv0BtCsOBhQLXZ0qzqrgsVebTRQzm2zTM0yfBpcTtPd3MOMFeMQTHJJ</span>
+<a href="#True-4-25" id="True-4-25" name="True-4-25"></a><span class="mi">8</span><span class="n">QH6twAKeJfY1lUCTXJYy1ZcrKnrNehksST8tk98Km9t5M2X59QZk7mJzzsUbnWr</span>
+<a href="#True-4-26" id="True-4-26" name="True-4-26"></a><span class="n">t</span><span class="o">+</span><span class="n">izid7xF7FAgDYj9XJgQHz04a4RjRSw5</span><span class="o">/</span><span class="mi">6</span><span class="n">dgexAgvGoeOkG7uUhYd5DEYQCyQyR</span>
+<a href="#True-4-27" id="True-4-27" name="True-4-27"></a><span class="n">Zy69pJN32L0nM2dC2e3NFU5BOBwocoKza3hdtSqqvIkj2kzyeU38uaJUco</span><span class="o">/</span><span class="n">Vk3OU</span>
+<a href="#True-4-28" id="True-4-28" name="True-4-28"></a><span class="n">s</span><span class="o">+</span><span class="n">sQNZbk5C1pxkLLwzu815tKg77Om4Nwbi</span><span class="o">+</span><span class="n">bgDvI</span>
+<a href="#True-4-29" id="True-4-29" name="True-4-29"></a><span class="o">-----</span><span class="kr">END</span> <span class="n">CERTIFICATE</span><span class="o">-----</span><span class="err">'</span>
+<a href="#True-4-30" id="True-4-30" name="True-4-30"></a><span class="n">BANK_ID_KEY</span><span class="o">=</span><span class="err">'</span><span class="o">-----</span><span class="kr">BEGIN</span> <span class="n">PRIVATE</span> <span class="n">KEY</span><span class="o">-----</span>
+<a href="#True-4-31" id="True-4-31" name="True-4-31"></a><span class="n">MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC</span><span class="o">+</span><span class="n">C</span><span class="o">/</span><span class="n">BERzUouyaY</span>
+<a href="#True-4-32" id="True-4-32" name="True-4-32"></a><span class="n">fYI</span><span class="o">+</span><span class="n">GoeyHqJOZWR2WzcltQIiSdTn3g9ZWwM8UonbU7ujXwvN88Qoy6tPdZR2ORu3</span>
+<a href="#True-4-33" id="True-4-33" name="True-4-33"></a><span class="n">aTQ7dazeWPo0L67XC3PJ1KYKi3xFJ2xis2Wh5Tve44eqajvJ4</span><span class="o">/</span><span class="mi">5</span><span class="n">mpU61iO9Ba</span><span class="o">+</span><span class="n">kj</span>
+<a href="#True-4-34" id="True-4-34" name="True-4-34"></a><span class="n">t0sW7IMbsCV5UVAEMSNJj7w9YDnfrspgPhKnWEt</span><span class="o">/</span><span class="n">YowtniAh0n</span><span class="o">+</span><span class="mi">21</span><span class="n">ML5rHMvEwMh</span>
+<a href="#True-4-35" id="True-4-35" name="True-4-35"></a><span class="n">HE</span><span class="o">+</span><span class="n">BmJnI2otb2yI5YXppgL</span><span class="o">/</span><span class="n">jSiYkqQ</span><span class="o">/</span><span class="n">s6r7hxiMwZu9fxXenEwF6pB5Kk5SbMRdp</span>
+<a href="#True-4-36" id="True-4-36" name="True-4-36"></a><span class="n">unqIygn3JubgL0k14VWxjNeecJqcy7JM5ENHcei20TbQPgQ3tTLAAL</span><span class="o">/</span><span class="n">GhNhUNI99</span>
+<a href="#True-4-37" id="True-4-37" name="True-4-37"></a><span class="n">QC4GXj2NAgMBAAECggEBAKiJH9b9Kxhm9</span><span class="o">/</span><span class="n">BNhZ4bmvEMF7XcVv5bIAnRfwX3YdcK</span>
+<a href="#True-4-38" id="True-4-38" name="True-4-38"></a><span class="n">Z6Q</span><span class="o">/</span><span class="n">gRwSumyF0iYsmORY5EGldNOvmyxIstqxcn</span><span class="o">+</span><span class="mi">0</span><span class="n">eMxqLeDv1Gaioll</span><span class="o">/</span><span class="n">uowpbNhL</span>
+<a href="#True-4-39" id="True-4-39" name="True-4-39"></a><span class="n">AOR64Yt0Jecg8mPfeAwvo6FVwfpdaIgk8YkZ</span><span class="o">+</span><span class="n">H5o2lBIosL2qDY</span><span class="o">/</span><span class="n">eWK4FCB94HUL</span>
+<a href="#True-4-40" id="True-4-40" name="True-4-40"></a><span class="n">Hq7za</span><span class="o">/</span><span class="mi">7</span><span class="n">J7t5WOYjiOLmb48Fpe7cA1C6ezU</span><span class="o">/</span><span class="n">MEwVmDBwZARccCyeQFp96tdzUxb7N</span>
+<a href="#True-4-41" id="True-4-41" name="True-4-41"></a><span class="n">ifSaDpUFyxHbb</span><span class="o">/</span><span class="n">GNy</span><span class="o">+</span><span class="n">hF2ApqFrJ69OBUsHqtYdd36lD</span><span class="o">/</span><span class="n">tPF0Lexsvtj</span><span class="o">/</span><span class="n">l21D</span><span class="o">/</span><span class="n">Nh6</span>
+<a href="#True-4-42" id="True-4-42" name="True-4-42"></a><span class="mi">80</span><span class="n">mEnpegpJBzO9z7wJkhz</span><span class="o">/</span><span class="mi">5</span><span class="n">etO3bnaVSUyGGgJl8KkUCgYEA5SnGKyWg3dDtNeEi</span>
+<a href="#True-4-43" id="True-4-43" name="True-4-43"></a><span class="mi">5</span><span class="n">qilYsTOERvulUJ49zzzva0ioD8sJHNlG1q7Dp9sb9rZW6VOL1W8FUZH63</span><span class="o">/</span><span class="mi">2</span><span class="n">sgte</span>
+<a href="#True-4-44" id="True-4-44" name="True-4-44"></a><span class="n">NE9njByK2fz9PXXUODu6yREAfDxcv9qkGTLWwZ0LFEQg68G</span><span class="o">+</span><span class="n">J1hIz6PQEuhAJqk8</span>
+<a href="#True-4-45" id="True-4-45" name="True-4-45"></a><span class="n">rYHXnTQ0qUw7R6gez2KoXp8wnFMCgYEA1E13E5NKs</span><span class="o">/</span><span class="n">VKctUQqXcKpy7VL017yBH8</span>
+<a href="#True-4-46" id="True-4-46" name="True-4-46"></a><span class="n">J2RTjDLVGh6BFcR9wGm5ipE659TpNKdqPN17bGPGj5MOdZL1</span><span class="o">+</span><span class="n">sGVTRkg4vSZeZuE</span>
+<a href="#True-4-47" id="True-4-47" name="True-4-47"></a><span class="n">kpw192KgwNoDznjeVH5qY7VM8Zy2DI91mg2NQTQiMF0mRLaenMOfzFBjHwQZ2J</span><span class="o">/</span><span class="n">J</span>
+<a href="#True-4-48" id="True-4-48" name="True-4-48"></a><span class="n">ecT3Vwepgp8CgYAsocIyzRVTnklU4RBHFDmBzwrDUklZUKT2oixmmL3Rr</span><span class="o">/</span><span class="n">wM7VyX</span>
+<a href="#True-4-49" id="True-4-49" name="True-4-49"></a><span class="n">w0gDRRF9h4Ylz0A2</span><span class="o">/</span><span class="mi">9</span><span class="o">+</span><span class="n">t1Q5U04tcidJDJePo6fYxFpDL05MNkLSETIdnqun1g8PK</span>
+<a href="#True-4-50" id="True-4-50" name="True-4-50"></a><span class="n">FJi3BLsPq2UuBYHfb9Zeem0gAZPc88EZmdxAhdZr0qkI</span><span class="o">/</span><span class="mi">7</span><span class="n">lgcrqQEzkIeQKBgGri</span>
+<a href="#True-4-51" id="True-4-51" name="True-4-51"></a><span class="n">kVfOqSaPEStdL</span><span class="o">+</span><span class="n">VR5JAlGPmWtgIVY</span><span class="o">/</span><span class="n">DlJtcH5Jgg0XaHFZSg5ePomFKNs9dpjigU</span>
+<a href="#True-4-52" id="True-4-52" name="True-4-52"></a><span class="n">jgYU</span><span class="o">+</span><span class="n">avhKr9w</span><span class="o">/</span><span class="n">NyBR8yoIRGCeh5qeMVjVhw1kJ9nY9E4sx6xApkudw2Ri2opc9ja</span>
+<a href="#True-4-53" id="True-4-53" name="True-4-53"></a><span class="n">h8pTF</span><span class="o">/</span><span class="mi">9</span><span class="n">ndlPT6WkdaD9yHWVJKEYStFnVG326gtIbAoGAetLNOSZBSW03SJlI7dhY</span>
+<a href="#True-4-54" id="True-4-54" name="True-4-54"></a><span class="mi">4</span><span class="n">hycNElfSd0t89Bf4YcYbWrpySeKCG0oTO7Y56ZS9RmgNEyz4HNXZcQ56inMNY6Z</span>
+<a href="#True-4-55" id="True-4-55" name="True-4-55"></a><span class="n">M</span><span class="o">+</span><span class="n">o1wGEKJKLBtCJHZp7Sh8zy</span><span class="o">/</span><span class="n">RMI3naF4vc4r4BpK9k5ZAEL8gHVm9M5C2ZG8whc</span>
+<a href="#True-4-56" id="True-4-56" name="True-4-56"></a><span class="n">r</span><span class="o">+</span><span class="n">Uu</span><span class="o">/</span><span class="n">g0P3m8w7INgsjxQy</span><span class="o">/</span><span class="n">U</span><span class="o">=</span>
+<a href="#True-4-57" id="True-4-57" name="True-4-57"></a><span class="o">-----</span><span class="kr">END</span> <span class="n">PRIVATE</span> <span class="n">KEY</span><span class="o">-----</span><span class="err">'</span>
+</code></pre></div>
+</details>
+<h3 id="test-account">Test account 💼<a class="headerlink" href="#test-account" title="Anchor link to this section for reference">⚓</a></h3>
+<p>Here is a guide: <a href="https://www.bankid.com/en/utvecklare/test/skaffa-testbankid/test-bankid-get" target="_blank">Get BankID for test</a></p>
+<h4 id="issue-personal-code">Issue personal code<a class="headerlink" href="#issue-personal-code" title="Anchor link to this section for reference">⚓</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use this method when you set up your environment for the first time.
+Otherwise, use this methods <a href="#login-with-mobile-app">mobile</a> or <a href="#login-with-desktop-app">desktop</a>.</p>
+</div>
+<ol>
+<li>Goto <a href="https://demo.bankid.com/ordercode" target="_blank">https://demo.bankid.com/ordercode</a></li>
+<li>
+<p>Fill form with your data (organization, email, project, fist name, last name)</p>
+<div class="admonition warning">
+<p class="admonition-title">Organization email</p>
+<p>Email should be a corporate, emails with <code class="highlight"><span class="nv">@gmail</span><span class="p">.</span><span class="n">com</span></code> domain wouldn't work❗</p>
+</div>
+<p><a class="glightbox" href="../assets/demo_bank_1.png"><img alt="Demo BankID Generate Code" src="../assets/demo_bank_1.png"/></a></p>
+</li>
+<li>
+<p>Goto your corporate email, you'll obtain a test 30-days trial code.</p>
+</li>
+</ol>
+<h4 id="login-with-personal-code">Login with personal code<a class="headerlink" href="#login-with-personal-code" title="Anchor link to this section for reference">⚓</a></h4>
+<ol>
+<li>Use this code to log in <a href="https://demo.bankid.com/logincode" target="_blank">https://demo.bankid.com/logincode</a>
+<a class="glightbox" href="../assets/demo_bank_2.png"><img alt="Demo BankID Login" src="../assets/demo_bank_2.png"/></a></li>
+<li>It's all, now you'll be able to set up Mobile / Desktop BankID environments.</li>
+</ol>
+<h4 id="login-with-mobile-app">Login with mobile app<a class="headerlink" href="#login-with-mobile-app" title="Anchor link to this section for reference">⚓</a></h4>
+<p>This is method to log in to test account using mobile app and QR code.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use this method when you already set up your test account via personal code <a href="#issue-personal-code">Issue personal code</a>.</p>
+</div>
+<ol>
+<li>Go to <a href="https://demo.bankid.com/logintest" target="_blank">https://demo.bankid.com/logintest</a></li>
+<li>
+<p>Open your BankID test app and scan QR code.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Mobile app should be configured, read here <a href="#mobile-test-environments">Mobile test environments</a>.</p>
+</div>
+</li>
+</ol>
+<h4 id="login-with-desktop-app">Login with desktop app<a class="headerlink" href="#login-with-desktop-app" title="Anchor link to this section for reference">⚓</a></h4>
+<p>This is method to log in to test account using desktop app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use this method when you already set up your test account via personal code <a href="#issue-personal-code">Issue personal code</a>.</p>
+</div>
+<ol>
+<li>Go to <a href="https://demo.bankid.com/logintest" target="_blank">https://demo.bankid.com/logintest</a></li>
+<li>
+<p>Click "Alternative: Start BankID Security Application on this device.".</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Mobile app should be configured, read here <a href="#mobile-test-environments">Mobile test environments</a>.</p>
+</div>
+</li>
+</ol>
+<h3 id="mobile-test-environments">Mobile test environments<a class="headerlink" href="#mobile-test-environments" title="Anchor link to this section for reference">⚓</a></h3>
+<h4 id="test-android-app">Test Android app 📱<a class="headerlink" href="#test-android-app" title="Anchor link to this section for reference">⚓</a></h4>
+<p>Here is a guide: <a href="https://www.bankid.com/en/utvecklare/test/skaffa-testbankid/testbankid-konfiguration" target="_blank">BankID test configuration</a></p>
+<ol>
+<li>
+<p>Install BankID app from your app store.</p>
+<p><a class="glightbox" href="../assets/android/bankid_1.jpeg"><img alt="Install" src="../assets/android/bankid_1.jpeg" width="200"/></a></p>
+</li>
+<li>
+<p>Enable "airplane mode".</p>
+</li>
+<li>
+<p>Open BankID app (you'll be notified that is no connection, click "OK").</p>
+<p>3.1 Click "⚙ Settings".</p>
+<p>3.2 Click "About BankID".</p>
+<p>3.3 Make a "long press" on the heading <code class="highlight">Error information</code> in the input dialog enter <code class="highlight">kundtest</code> and save.</p>
+<p><a class="glightbox" href="../assets/android/bankid_2.jpeg"><img alt="Open app" src="../assets/android/bankid_2.jpeg" width="200"/></a>
+<a class="glightbox" href="../assets/android/bankid_3.jpeg"><img alt="Settings" src="../assets/android/bankid_3.jpeg" width="200"/></a>
+<a class="glightbox" href="../assets/android/bankid_4.jpeg"><img alt="About BankID" src="../assets/android/bankid_4.jpeg" width="200"/></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If everything is "OK", it appears <code class="highlight">CUST</code> after the Version.</p>
+</div>
+</li>
+<li>
+<p>Exit app, and also close it from background.</p>
+</li>
+<li>Disable "airplane mode".</li>
+<li>Done.</li>
+</ol>
+<h4 id="test-ios-app">Test iOS app 📱<a class="headerlink" href="#test-ios-app" title="Anchor link to this section for reference">⚓</a></h4>
+<ol>
+<li>
+<p>Uninstall any existing version of BankID Security App and then reinstall it from App Store.</p>
+</li>
+<li>
+<p>In Settings → BankID → Developer → Server, enter <code class="highlight">cavainternal.test.bankid.com</code>.</p>
+</li>
+<li>
+<p>Done, BankID Security App will connect to the <ins>test server</ins>.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that the app must be uninstalled/reinstalled to be restored for the production environment.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">TODO Screenshots</p>
+<p>If you have an iPhone you can help to document it with screenshots (Contributors welcome).</p>
+</div>
+<h3 id="desktop-test-environments">Desktop test environments<a class="headerlink" href="#desktop-test-environments" title="Anchor link to this section for reference">⚓</a></h3>
+<h4 id="test-windows-app">Test Windows app 🖥<a class="headerlink" href="#test-windows-app" title="Anchor link to this section for reference">⚓</a></h4>
+<ol>
+<li><a class="md-button" href="https://install.bankid.com/api/file-download/Win">Download</a> windows BankID desktop application (<a href="https://install.bankid.com/Download/PostDownload/Win" target="_blank">extra link</a>)</li>
+<li>Install it.</li>
+<li>Run &amp; close application.</li>
+<li>
+<p>Go to this path:
+    C:\Users\<strong>USER_NAME</strong>\AppData\Roaming\BankID\Config</p>
+<p>where <strong>USER_NAME</strong> - your Window's user.</p>
+</li>
+<li>
+<p>Create file with name <code class="highlight">CavaServerSelector.txt</code></p>
+</li>
+<li>Write <code class="highlight">kundtest</code> inside file and save it.</li>
+<li>
+<p>Open application, navigate to: "File" → "Preferences" → "Info for support" → "Check connections" → click "Check".</p>
+<p>You should get:</p>
+<ul>
+<li>BankID server: OK</li>
+<li>Update server: OK</li>
+</ul>
+<p><a class="glightbox" href="../assets/windows/bankid_test_check.jpeg"><img alt="Test check" src="../assets/windows/bankid_test_check.jpeg"/></a></p>
+</li>
+<li>
+<p>Done.</p>
+</li>
+</ol>
+<h4 id="test-macos-app">Test MacOS app 💻<a class="headerlink" href="#test-macos-app" title="Anchor link to this section for reference">⚓</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">TODO</p>
+<p>If you have a Macbook, you can help to document it with screenshots (Contributors welcome).</p>
+</div>
+<h3 id="generate-personal-number-customizable">Generate personal number (customizable)<a class="headerlink" href="#generate-personal-number-customizable" title="Anchor link to this section for reference">⚓</a></h3>
+<ol>
+<li>Goto <a href="https://tedeh.net/tools/generator-for-swedish-personnummer/" target="_blank">Personal number generator</a></li>
+<li>Select "Output format" as "YYYYMMDDNNNN".</li>
+<li>Select your gender.</li>
+<li>Fill out "Date of birth".</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><a class="glightbox" href="../assets/demo_bank_2_1.png"><img alt="Generate personal number" src="../assets/demo_bank_2_1.png"/></a></p>
+</div>
+<h3 id="generate-random-personal-number-with-fejkse">Generate random personal number with (fejk.se)<a class="headerlink" href="#generate-random-personal-number-with-fejkse" title="Anchor link to this section for reference">⚓</a></h3>
+<ol>
+<li>Generate personal number at: <a href="https://fejk.se/" target="_blank">https://fejk.se/</a></li>
+<li>Get date of birth (without dashes). </li>
+<li>Get latest 4 digits of personnummer. </li>
+<li>Concatenate it without dashes.</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>1) Date of birth <code class="highlight"><span class="mf">1996</span><span class="o">-</span><span class="mf">10</span><span class="o">-</span><span class="mf">21</span></code> → <code class="highlight"><span class="mf">19961021</span></code> (remove dashes)</p>
+<p>2) End of personal number <code class="highlight">-1238</code> → <code class="highlight"><span class="mf">1238</span></code> (removed dash)</p>
+<p>3) Result <code class="highlight"><span class="mf">19961021</span></code> + <code class="highlight"><span class="mf">1238</span></code> → <code class="highlight"><span class="mf">199610211238</span></code> (must be 12 digits length)
+<a class="glightbox" href="../assets/demo_bank_3.png"><img alt="Generate personal number" src="../assets/demo_bank_3.png"/></a></p>
+</div>
+<h3 id="issue-bankid-for-test">Issue BankID for test<a class="headerlink" href="#issue-bankid-for-test" title="Anchor link to this section for reference">⚓</a></h3>
+<ol>
+<li>
+<p>Login to Demo Bank.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>First time login: <a href="#login-with-personal-code">personal code</a>.</p>
+<p>Subsequent time login: <a href="#login-with-mobile-app">mobile</a>, <a href="#login-with-desktop-app">desktop</a>.</p>
+</div>
+</li>
+<li>
+<p>Click selected button under "Issue BankID for Test".</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul>
+<li>"<ins>Mobile BankID</ins>" - for mobile 📱;</li>
+<li>"<ins>BankID on file</ins>" - for desktop 🖥;</li>
+</ul>
+</div>
+<p><a class="glightbox" href="../assets/demo_bank_4.png"><img alt="Issue BankID for Test" src="../assets/demo_bank_4.png"/></a></p>
+</li>
+<li>
+<p>Fill data into fields (first name, last name, personal number).</p>
+<p><a class="glightbox" href="../assets/demo_bank_5.png"><img alt="Issue for test" src="../assets/demo_bank_5.png"/></a> </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use random first name and last name.</p>
+</div>
+</li>
+<li>
+<p>Click "Issue" and proceed with connection section, depends on your choice (mobile or desktop).</p>
+</li>
+</ol>
+<h3 id="connect-with-android">Connect with Android 📱<a class="headerlink" href="#connect-with-android" title="Anchor link to this section for reference">⚓</a></h3>
+<p>Before start: <a href="#connect-test-app-to-bankid-test-account">requirements</a></p>
+<ol>
+<li>
+<p>Click "Issue" under "Mobile BankID" form.
+    <a class="glightbox" href="../assets/demo_bank_5.png"><img alt="Issue BankID for phone" src="../assets/demo_bank_5.png"/></a></p>
+</li>
+<li>
+<p>It will open modal window with QR code.
+    <a class="glightbox" href="../assets/demo_bank_7.png"><img alt="QR BankID for phone" src="../assets/demo_bank_7.png"/></a></p>
+</li>
+<li>
+<p>Open BankID app.</p>
+</li>
+<li>
+<p>Click "New BankID".</p>
+<p><a class="glightbox" href="../assets/android/bankid_13.jpeg"><img alt="New BankID" src="../assets/android/bankid_13.jpeg" width="200"/></a></p>
+</li>
+<li>
+<p>It will open scanner, scan QR code inside modal window.</p>
+<p>Success screen at mobile:</p>
+<p><a class="glightbox" href="../assets/android/bankid_5.jpeg"><img alt="Activation completed" src="../assets/android/bankid_5.jpeg" width="170"/></a></p>
+<p>Success screen at modal:</p>
+<p><a class="glightbox" href="../assets/demo_bank_8.png"><img alt="Activation completed" src="../assets/demo_bank_8.png"/></a></p>
+</li>
+<li>
+<p>You can enable fingerprint to easy approve BankID confirmation.</p>
+<p><a class="glightbox" href="../assets/android/bankid_6.jpeg"><img alt="Enable fingerprint" src="../assets/android/bankid_6.jpeg" width="170"/></a>
+<a class="glightbox" href="../assets/android/bankid_7.jpeg"><img alt="Confirmation" src="../assets/android/bankid_7.jpeg" width="170"/></a>
+<a class="glightbox" href="../assets/android/bankid_8.jpeg"><img alt="Security code" src="../assets/android/bankid_8.jpeg" width="170"/></a>
+<a class="glightbox" href="../assets/android/bankid_9.jpeg"><img alt="Check fingerprint" src="../assets/android/bankid_9.jpeg" width="170"/></a>
+<a class="glightbox" href="../assets/android/bankid_10.jpeg"><img alt="Check fingerprint completed" src="../assets/android/bankid_10.jpeg" width="170"/></a></p>
+</li>
+<li>
+<p>You can check new test BankID connection inside your "Settings" under the BankID tab.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>P.S. Also your main screen now will have "QR code" button instead of "New BankID"</p>
+</div>
+<p><a class="glightbox" href="../assets/android/bankid_11.jpeg"><img alt="Main screen" src="../assets/android/bankid_11.jpeg" width="170"/></a>
+<a class="glightbox" href="../assets/android/bankid_12.jpeg"><img alt="Connected settings" src="../assets/android/bankid_12.jpeg" width="170"/></a></p>
+</li>
+</ol>
+<h3 id="connect-with-ios">Connect with iOS 📱<a class="headerlink" href="#connect-with-ios" title="Anchor link to this section for reference">⚓</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you have an iPhone you can help to document it with screenshots (Contributors welcome).</p>
+</div>
+<h3 id="connect-with-windows">Connect with Windows 🖥<a class="headerlink" href="#connect-with-windows" title="Anchor link to this section for reference">⚓</a></h3>
+<p>Before start: <a href="#connect-test-app-to-bankid-test-account">requirements</a></p>
+<ol>
+<li>
+<p>Click "Issue" under "BankID on file" form.
+    <a class="glightbox" href="../assets/demo_bank_5.png"><img alt="Issue BankID for phone" src="../assets/demo_bank_5.png"/></a></p>
+</li>
+<li>
+<p>Click "Open BankID issuing".</p>
+</li>
+<li>
+<p>It will open modal window with QR code.
+    <a class="glightbox" href="../assets/windows/bankid_1.jpeg"><img alt="Modal" src="../assets/windows/bankid_1.jpeg"/></a></p>
+<p>Click "I have the most recent BankID application, proceed without installation &gt;"</p>
+</li>
+<li>
+<p>Click "Continue &gt;".
+    <a class="glightbox" href="../assets/windows/bankid_2.jpeg"><img alt="Continue" src="../assets/windows/bankid_2.jpeg"/></a></p>
+</li>
+<li>
+<p>Click "Start" inside Start the program modal.
+    <a class="glightbox" href="../assets/windows/bankid_3.jpeg"><img alt="Start" src="../assets/windows/bankid_3.jpeg"/></a></p>
+</li>
+<li>
+<p>You will be prompted to set password. It should be secure enough.</p>
+</li>
+<li>
+<p>Close the modal or click "Close" button.
+    <a class="glightbox" href="../assets/windows/bankid_4.jpeg"><img alt="Completed" src="../assets/windows/bankid_4.jpeg"/></a></p>
+</li>
+<li>
+<p>Inside BankID Secure Application you'll get new record about BankID connection.
+    <a class="glightbox" href="../assets/windows/bankid_5.jpeg"><img alt="Security application" src="../assets/windows/bankid_5.jpeg"/></a></p>
+</li>
+<li>
+<p>Done. Now you can test login with BankID at Windows Desktop.</p>
+</li>
+</ol>
+<h3 id="connect-with-macos">Connect with MacOS 💻<a class="headerlink" href="#connect-with-macos" title="Anchor link to this section for reference">⚓</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">TODO</p>
+<p>If you have a Macbook, you can help to document it with screenshots (Contributors welcome).</p>
+</div>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Main 🏡" class="md-footer__link md-footer__link--prev" href=".." rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Main 🏡
+            </div>
+</div>
+</a>
+<a aria-label="Next: Usage 🔌" class="md-footer__link md-footer__link--next" href="../usage/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Usage 🔌
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2022 bankid-asyncio - All rights reserved.
+    </div>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.share", "search.highlight", "content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+         <loc>https://kostiantyn-salnykov.github.io/bankid_asyncio/</loc>
+         <lastmod>2023-02-05</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/en/"/>
+         <xhtml:link rel="alternate" hreflang="uk" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/uk/"/>
+         
+    </url>
+    <url>
+         <loc>https://kostiantyn-salnykov.github.io/bankid_asyncio/setup/</loc>
+         <lastmod>2023-02-05</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/en/setup/"/>
+         <xhtml:link rel="alternate" hreflang="uk" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/uk/setup/"/>
+         
+    </url>
+    <url>
+         <loc>https://kostiantyn-salnykov.github.io/bankid_asyncio/usage/</loc>
+         <lastmod>2023-02-05</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/en/usage/"/>
+         <xhtml:link rel="alternate" hreflang="uk" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/uk/usage/"/>
+         
+    </url>
+    <url>
+         <loc>https://kostiantyn-salnykov.github.io/bankid_asyncio/common/abbreviations/</loc>
+         <lastmod>2023-02-05</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/en/common/abbreviations/"/>
+         <xhtml:link rel="alternate" hreflang="uk" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/uk/common/abbreviations/"/>
+         
+    </url>
+    <url>
+         <loc>https://kostiantyn-salnykov.github.io/bankid_asyncio/includes/badges/</loc>
+         <lastmod>2023-02-05</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/en/includes/badges/"/>
+         <xhtml:link rel="alternate" hreflang="uk" href="https://kostiantyn-salnykov.github.io/bankid_asyncio/uk/includes/badges/"/>
+         
+    </url>
+</urlset>
